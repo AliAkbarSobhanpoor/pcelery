@@ -1,0 +1,8 @@
+asgiref
+Django
+sqlparse
+django-filer
+setuptools
+django-debug-toolbar
+ruff
+pre-commit
