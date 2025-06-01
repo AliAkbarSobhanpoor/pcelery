@@ -18,4 +18,3 @@ class UserAdmin(BaseUserAdmin):
         "username",
         "is_superuser",
     ]
-
