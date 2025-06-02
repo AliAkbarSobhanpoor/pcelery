@@ -1,6 +1,7 @@
 # Ignore Python compiled files
 *.pyc
 *.pyo
+*.pyi
 __pycache__/
 *.swp
 *.swo

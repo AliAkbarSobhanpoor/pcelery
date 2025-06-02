@@ -157,3 +157,15 @@ FILER_CANONICAL_URL = "sharing/"
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+CELERY_BROKER_URL = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "redis://localhost:6379"
+
+# Email configs . also this must be in my real project . remember that remove your password
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'mailer.sobhanpour@gmail.com'
+EMAIL_HOST_PASSWORD = 'dbxh ldja ejlm vcjb'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
