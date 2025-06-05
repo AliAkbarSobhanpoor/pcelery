@@ -1,24 +1,27 @@
+# core python
+
+# core django
 from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
-from django.core.mail import send_mail
+
+# installed python
+
+# installed django
+from celery import shared_task
+
+# created by me
 from .forms import MailRequestForm
-# from .models import MailRequest
+from .tasks import send_email_in_queue
 
 def mail_request_view(request: HttpRequest) -> HttpResponse:
     form = MailRequestForm()
-    
     if request.method == 'POST':
         form = MailRequestForm(request.POST)
         if form.is_valid():
             instance = form.save()
             # Send email to the user
-            send_mail(
-                subject='Thanks for your message!',
-                message='We received your message and will get back to you soon.',
-                from_email='mailer.sobhanpour@gmail.com', #read this from the Core setting.
-                recipient_list=[instance.email],
-                fail_silently=False,
-            )
+            confirm_message = "'We received your message and will get back to you soon.'"
+            send_email_in_queue.delay(instance.email, message=confirm_message)
             return redirect('mail_thank_you')
         
     return render(request, 'users/mail_form.html', {'form': form})

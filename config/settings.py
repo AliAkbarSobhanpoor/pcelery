@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     "easy_thumbnails",
     "filer",
     "debug_toolbar",
+    "django_celery_beat",
+    "django_celery_results",
 ]
 
 MIDDLEWARE = [
@@ -158,14 +160,17 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
+# celery configs
+
 CELERY_BROKER_URL = "redis://localhost:6379"
-CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_RESULT_BACKEND = "django-db"
+CELERY_BEAT_SCHEDULE = {}
 
 # Email configs . also this must be in my real project . remember that remove your password
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'mailer.sobhanpour@gmail.com'
-EMAIL_HOST_PASSWORD = 'dbxh ldja ejlm vcjb'
+EMAIL_HOST_PASSWORD = '<password>'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False

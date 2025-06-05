@@ -7,4 +7,6 @@ django-debug-toolbar
 ruff
 pre-commit
 celery
+django-celery-beat
+django-celery-results
 redis

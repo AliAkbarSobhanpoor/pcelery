@@ -1,8 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
-from .models import MailRequest
 from typing import Union
+
+from .models import MailRequest
 User = get_user_model()
 
 class CustomUserCreationForm(UserCreationForm):
